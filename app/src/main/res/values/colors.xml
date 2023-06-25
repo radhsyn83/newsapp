@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF7314</color>
+    <color name="colorPrimaryDark">#E98F27</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_white">#F4F4F4</color>
+    <color name="bg_search">#FBFAF6</color>
+    <color name="orange">#FF7314</color>
+    <color name="light_orange">#E98F27</color>
+    <color name="orange_transparent">#9FFF7314</color>
+    <color name="light_black">#393534</color>
+    <color name="black">#22211F</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="dividers">#DBDBDB</color>
+    <color name="dividers2">#F0EFF5</color>
+    <color name="dividers3">#F7F5F5</color>
+
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_20">#cccccc</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_50">#777777</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_70">#444444</color>
+    <color name="grey_90">#263238</color>
+
+    <color name="overlay_light_30">#4DFFFFFF</color>
+    <color name="overlay_light_50">#8FFFFFF0</color>
+    <color name="overlay_light_70">#B3FFFFFF</color>
+    <color name="overlay_light_90">#E6FFFFFF</color>
+    <color name="blue">#0CCEFF</color>
+</resources>
