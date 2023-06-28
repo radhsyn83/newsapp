@@ -1,8 +1,13 @@
 package com.radhsyn83.newsapp.presentation.sources
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,12 +23,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.radhsyn83.newsapp.R
 import com.radhsyn83.newsapp.presentation.Screen
+import com.radhsyn83.newsapp.presentation.news.components.NewsSearch
 import com.radhsyn83.newsapp.presentation.sources.components.SourceItems
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,8 +45,24 @@ fun SourcesScreen(
         TopAppBar(
             colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary),
             title = {
-                if (state.title.isNotBlank()) {
-                    Text(text = state.title, style = TextStyle(color = Color.White))
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(5.dp)
+                ) {
+                    Image(
+                        modifier = Modifier
+                            .height(40.dp)
+                            .padding(end = 10.dp)
+                            .clickable {
+                                navController.popBackStack()
+                            },
+                        painter = painterResource(id = R.drawable.ic_baseline_arrow_back),
+                        contentDescription = "back"
+                    )
+                    if (state.title.isNotBlank()) {
+                        Text(text = state.title, style = TextStyle(color = Color.White))
+                    }
                 }
             },
         )
