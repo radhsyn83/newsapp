@@ -3,8 +3,6 @@ package com.radhsyn83.newsapp.common
 import com.radhsyn83.newsapp.BuildConfig.API_KEY
 import com.radhsyn83.newsapp.BuildConfig.BASE_URL
 import com.radhsyn83.newsapp.data.remote.NewsApi
-import com.radhsyn83.newsapp.net.ApiServices
-import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,19 +11,10 @@ import java.util.concurrent.TimeUnit
 
 object NetworkInstance {
 
-    fun apiBak(): ApiServices {
-        return Retrofit.Builder().baseUrl(BASE_URL)
-            .client(getInterceptor())
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .build()
-            .create(ApiServices::class.java)
-    }
     fun api(): NewsApi {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .client(getInterceptor())
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(NewsApi::class.java)
     }
