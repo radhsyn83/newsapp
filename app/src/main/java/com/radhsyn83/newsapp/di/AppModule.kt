@@ -1,9 +1,9 @@
 package com.radhsyn83.newsapp.di
 
-import com.radhsyn83.newsapp.data.DataSourcesImpl
-import com.radhsyn83.newsapp.data.response.RemoteDataSource
-import com.radhsyn83.newsapp.net.ApiServices
-import com.radhsyn83.newsapp.net.NetworkInstance
+import com.radhsyn83.newsapp.common.NetworkInstance
+import com.radhsyn83.newsapp.data.remote.NewsApi
+import com.radhsyn83.newsapp.data.repository.NewsRepositoryImpl
+import com.radhsyn83.newsapp.domain.repository.NewsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,20 +13,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-    @Singleton
     @Provides
-    fun provideAPI() : ApiServices {
+    fun provideAPI() : NewsApi {
         return NetworkInstance.api()
     }
 
     @Provides
     @Singleton
-    fun provideDataSource(apiServices: ApiServices): RemoteDataSource =
-        RemoteDataSource(apiServices)
-
-    @Provides
-    @Singleton
-    fun provideDataSourceImpl(remoteDataSource: RemoteDataSource): DataSourcesImpl =
-        DataSourcesImpl(remoteDataSource)
+    fun provideMovieRepository(api: NewsApi): NewsRepository {
+        return NewsRepositoryImpl(api)
+    }
 }
