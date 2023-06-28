@@ -1,5 +1,6 @@
 package com.radhsyn83.newsapp.presentation.news
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -27,7 +28,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.google.gson.Gson
 import com.radhsyn83.newsapp.R
+import com.radhsyn83.newsapp.presentation.Screen
 import com.radhsyn83.newsapp.presentation.news.components.NewsItems
 import com.radhsyn83.newsapp.presentation.news.components.NewsSearch
 import com.radhsyn83.newsapp.ui.theme.OnBottomReached
@@ -77,6 +80,8 @@ fun NewsScreen(
                     NewsItems(
                         article = article,
                         onItemClick = {
+                            val json = Uri.encode(Gson().toJson(article.url))
+                            navController.navigate(Screen.WebViewScreen.route + "/$json")
                         }
                     )
                 }
